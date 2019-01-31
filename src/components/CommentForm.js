@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from 'moment';
 
 class CommentForm extends Component {
   constructor(props){
@@ -9,26 +8,13 @@ class CommentForm extends Component {
       error: "",
       comment: {
         name: this.props.name,
-        message: "",
-        time: ""
+        message: ""
       }
     };
   }
 
-  componentDidMount(){
-    let today = new Date().toLocaleString();
-    console.log(today);
-    this.setState({
-      comment: {
-        time: today
-      }
-    });
-    console.log('state', this.state);
-  }
-
   handleFieldChange = e => {
     const { value, name } = e.target;
-    console.log(e.target.value);
      this.setState({
        ...this.state,
        comment: {
@@ -47,13 +33,15 @@ class CommentForm extends Component {
 
     this.setState({
       error: "",
-      loading: true,
+      loading: true
     });
+
     let {comment} = this.state;
     this.props.addComment(comment);
 
     this.setState({
       comment:{
+        ...this.state.comment,
         message: ""
       }
     });
@@ -73,6 +61,7 @@ class CommentForm extends Component {
     return (
       <React.Fragment>
         <form onSubmit={this.onSubmit}>
+
           <div className="form-group">
             <textarea
               onChange={this.handleFieldChange}
@@ -81,6 +70,7 @@ class CommentForm extends Component {
               placeholder="Add a comment..."
               name="message"
               rows="3"
+              style={{resize: 'none'}}
             />
           </div>
 

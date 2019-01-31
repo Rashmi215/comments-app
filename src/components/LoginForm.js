@@ -6,8 +6,7 @@ import TextField from 'material-ui/TextField';
 
 class LoginForm extends Component {
   state={
-   username:'',
-   time2: ''
+   username:''
  }
 
  handleClick = e =>{
@@ -19,7 +18,7 @@ class LoginForm extends Component {
       <div className='text-center login'>
         <MuiThemeProvider>
           <div>
-             <AppBar title="Login"/>
+             <AppBar title="Login Form"/>
              <TextField
                hintText="Enter your Name"
                floatingLabelText="Name"
