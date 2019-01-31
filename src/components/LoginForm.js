@@ -6,7 +6,8 @@ import TextField from 'material-ui/TextField';
 
 class LoginForm extends Component {
   state={
-   username:''
+   username:'',
+   time2: ''
  }
 
  handleClick = e =>{

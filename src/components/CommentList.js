@@ -1,7 +1,7 @@
 import React from "react";
 import Comment from "./Comment";
 
-export default function CommentList(props) {
+const CommentList = (props) => {
   return (
     <div className="commentList py-3">
       <h5 className="text-muted mb-4">
@@ -21,3 +21,5 @@ export default function CommentList(props) {
     </div>
   );
 }
+
+export default CommentList;

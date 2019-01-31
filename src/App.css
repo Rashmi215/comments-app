@@ -5,8 +5,8 @@
 
 .App-header {
     text-align: center;
-    background-color: var(--secondary);
-    padding: 20px;
+    background-color: grey;
+    padding: 15px;
     color: white;
     border-radius: 0.3rem;
 }
@@ -15,7 +15,11 @@
     font-size: 1.5em;
 }
 
-.login{
+#post{
+  border-radius: 0.3rem;
+}
 
+.media{
+  
 }
 

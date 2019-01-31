@@ -67,8 +67,13 @@ class MainComponent extends Component {
             </span>
            </h1>
           </header>
-          <div className='bg-white mb-3'>
-            <span>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+          <div className='mb-3 py-3 px-3 bg-info text-white' id='post'>
+            <h3>Tiny Buddha</h3>
+            <span>
+            <i>"As long as you feel pain, you're still alive. As long as you make mistakes, you're still human. And as long as you keep trying, there' still hope." - Susan Gale</i>
+            <br />
+            Lori Deschene founded Tiny Buddha in 2009 with the objective of providing a valuable resource and reference for happiness and peace. Personal stories about mindfulness, spirituality, social relationships, personal development and meditation are shared by readers of all ages from all over the world. As Lori underlines, Tiny Buddha is an online community made by people to help the others by sharing their meaningful wisdom.
+            </span>
           </div>
             <CommentForm addComment={this.addComment} name={this.props.match.params.name}/>
             <CommentList

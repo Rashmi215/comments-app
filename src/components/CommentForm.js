@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment';
 
 class CommentForm extends Component {
   constructor(props){
@@ -8,9 +9,21 @@ class CommentForm extends Component {
       error: "",
       comment: {
         name: this.props.name,
-        message: ""
+        message: "",
+        time: ""
       }
     };
+  }
+
+  componentDidMount(){
+    let today = new Date().toLocaleString();
+    console.log(today);
+    this.setState({
+      comment: {
+        time: today
+      }
+    });
+    console.log('state', this.state);
   }
 
   handleFieldChange = e => {
@@ -28,10 +41,14 @@ class CommentForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     if (!this.isFormValid()) {
-      this.setState({ error: "All fields are required." });
+      this.setState({ error: "Please enter some comment!" });
       return;
     }
-    this.setState({ error: "", loading: true });
+
+    this.setState({
+      error: "",
+      loading: true,
+    });
     let {comment} = this.state;
     this.props.addComment(comment);
 
@@ -39,7 +56,7 @@ class CommentForm extends Component {
       comment:{
         message: ""
       }
-    })
+    });
   }
 
   isFormValid = () => {
@@ -63,7 +80,7 @@ class CommentForm extends Component {
               className="form-control"
               placeholder="Add a comment..."
               name="message"
-              rows="5"
+              rows="3"
             />
           </div>
 
