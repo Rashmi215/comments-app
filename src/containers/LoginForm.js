@@ -10,7 +10,7 @@ class LoginForm extends Component {
  }
 
  handleClick = e =>{
-   this.props.history.push(`/main/${this.state.username}`);
+   this.props.history.push(`/${this.state.username}`);
  }
 
  render() {
@@ -24,6 +24,7 @@ class LoginForm extends Component {
                floatingLabelText="Name"
                value={this.state.username}
                onChange = {(e) => this.setState({username: e.target.value})}
+               style={style}
                />
                <br/> <br/>
                <RaisedButton label="Submit" primary={true} style={style} onClick={this.handleClick}/>
@@ -35,7 +36,7 @@ class LoginForm extends Component {
 }
 
 const style = {
- margin: 15,
-};
+  margin: 10
+}
 
 export default LoginForm;

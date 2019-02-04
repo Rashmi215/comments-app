@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import {addComment} from '../actions/index';
 
 class CommentForm extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
+    state = {
       loading: false,
       error: "",
       comment: {
@@ -11,44 +11,31 @@ class CommentForm extends Component {
         message: ""
       }
     };
-  }
 
   handleFieldChange = e => {
-    const { value, name } = e.target;
      this.setState({
-       ...this.state,
        comment: {
          ...this.state.comment,
-         [name]: value
+         message: e.target.value
        }
      });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    if (!this.isFormValid()) {
+    if (!(this.state.comment.message !== "")) {
       this.setState({ error: "Please enter some comment!" });
       return;
     }
-
-    this.setState({
-      error: "",
-      loading: true
-    });
-
-    let {comment} = this.state;
-    this.props.addComment(comment);
-
+    this.setState({error: "", loading: true});
+    this.props.addComment(this.state.comment);
+    //console.log('comment in cf', this.state.comment);
     this.setState({
       comment:{
         ...this.state.comment,
         message: ""
       }
     });
-  }
-
-  isFormValid = () => {
-    return this.state.comment.message !== "";
   }
 
   renderError = () => {
@@ -61,7 +48,6 @@ class CommentForm extends Component {
     return (
       <React.Fragment>
         <form onSubmit={this.onSubmit}>
-
           <div className="form-group">
             <textarea
               onChange={this.handleFieldChange}
@@ -87,4 +73,10 @@ class CommentForm extends Component {
   }
 }
 
-export default CommentForm;
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    addComment: (comment) => {dispatch(addComment(comment))}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CommentForm);

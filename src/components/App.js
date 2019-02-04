@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
+import "../styles/App.css";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import MainComponent from './components/MainComponent';
-import LoginForm from './components/LoginForm';
+import MainComponent from '../containers/MainComponent';
+import LoginForm from '../containers/LoginForm';
 
 class App extends Component {
   render(){
@@ -11,7 +11,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={LoginForm} />
-            <Route path='/main/:name' component={MainComponent}/>
+            <Route path='/:name' component={MainComponent}/>
           </Switch>
         </div>
       </BrowserRouter>
